@@ -6,13 +6,19 @@ import List from 'components/List';
 import { Wrapper, Title } from './styles';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchStoriesFirstPage();
+  }
+
   render() {
+    const { stories } = this.props;
+
     return (
       <ThemeProvider theme={colorsDark}>
         <div>
           <Wrapper>
             <Title>Hacker News Reader</Title>
-            <List />
+            <List stories={stories} />
           </Wrapper>
         </div>
       </ThemeProvider>
